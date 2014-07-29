@@ -1,0 +1,212 @@
+html, body, #map {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+form {
+    display: inline;
+}
+input[type=text] {
+    width: 30px;
+}
+dt {
+    font-weight: bold;
+}
+label {
+    cursor: pointer;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+#wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-top: 31px;
+    padding-left: 281px;
+}
+#left {
+    position: absolute;
+    width: 280px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-right: 1px solid black;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+#top {
+    background: url(img/gradient.png) repeat-x;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid black;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 10000;
+    margin-left: 281px;
+    font-size: 0.9em;
+}
+#top ul {
+    margin: 0;
+}
+#top li {
+    display: inline;
+    padding-right: 4px;
+}
+#top li+li {
+    padding-left: 8px;
+    border-left: 1px solid #000;
+}
+#help {
+    position: absolute;
+    top: 0;
+    right: 2em;
+}
+#reset {
+    position: absolute;
+    top: 0;
+    left: 2em;
+}
+#setmax {
+    height:16px;
+    width:16px;
+    cursor: pointer;
+    margin-top: 0.45em;
+    position: absolute;
+    margin-left: 0.4em;
+}
+#map {
+   /* cursor: move; */
+    background-color: #CCCCCC;
+}
+#title, #tags, #shortdesc {
+    display: none;
+}
+a#showall {
+    font-size: smaller;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border: 1px solid #CACECE;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+    padding-right: 9px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+}
+
+label {
+    display: inline;
+}
+ 
+input.olButton {
+    display: none;
+}
+ 
+input.olButton + label {
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding-right: 9px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+    padding-left:20px;
+    width: 249px;
+}
+input[type=radio].olButton + label {
+}
+input.olButton + label:active, input.olButton:checked + label:active {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+input.olButton:checked + label {
+    background-color: #e9ecee;
+    border: 1px solid #adb8c0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+    color: #99a1a7;
+}
+input[type=radio].olButton:checked + label {
+}
+
+input.olButton:checked + label:after {
+    content: '\2714';
+    font-size: smaller;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: #99a1a7;
+}
+
+.labelSpan {
+    font-size: small;
+}
+
+.baseLbl, .dataLbl {
+    font-size: large;
+    padding: 7px;
+}
+.dataLbl {
+    margin-top: 15px;
+}
+
+.social {
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-right: 20px;
+    font-size: small;
+    padding-bottom: 10px;
+}
+.box {
+    padding-top: 25px;
+}
+
+
+/* jqModal base Styling courtesy of;
+  Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+  the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+  can change this value by either;
+    a) supplying one via CSS
+    b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */
+  
+.jqmWindow {
+    display: none;
+    
+    position: fixed;
+    top: 17%;
+    left: 50%;
+    
+    overflow-y: auto;
+    
+    background-color: #EEE;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+    
+    z-index: 5000000;
+}
+
+.jqmWindow#dialog_help {
+    width: 600px;
+    height: 50%;
+    margin-left: -300px;
+}
+
+.jqmWindow#dialog_imprint {
+    width: 300px;
+    margin-left: -150px;
+}
+.jqmOverlay { background-color: #000; }

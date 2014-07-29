@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" href="favicon.ico" />
+        <title>Wien Punktgenau</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <!--[if lt IE 9]>
+            <style>input.olButton { display: inline-block; margin-bottom: -25px; } input.olButton + label { padding-left: 2px; margin-left: 20px; }</style>
+        <![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="openlayers.js" type="text/javascript"></script>
+	<script src="de.js" type="text/javascript"></script>
+	<script src="jquery-1.8.3.min.js" type="text/javascript"></script>
+	<script src="jqmodal.js" type="text/javascript"></script>
+	<script src="jquery.cookie.js" type="text/javascript"></script>
+	<script src="config.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="left">
+                <div id="layerswitcher"></div><br />
+                <a href="#" id="showall">alle verfügbaren anzeigen</a>
+                <div class="social box">
+                    Diese Applikation soll vor allem Daten darstellen, die (noch) nicht im offiziellen <a href="http://www.wien.gv.at/stadtplan">Stadtplan</a> aufscheinen, aber im Zuge der OGD Initiative freigegeben wurden.<br />
+                    <br />Es ist außerdem möglich, durch einen Klick auf "alle verfügbaren anzeigen" alle (über den GeoServer) freigegebenen Daten anzuzeigen. Die Beschreibungen in den Popups sind dann allerdings nur mit den Rohdaten gefüllt und sehen eventuell nicht so toll aus (z.B. BAUMOGD statt Baumkataster oder BEZ statt Bezirk).
+                    <div class="social">
+                        <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fogd.mpitzer.at%2F&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ogd.mpitzer.at/" data-lang="de">Twittern</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'de'}</script>
+                        <div class="g-plusone" data-size="medium" data-href="http://ogd.mpitzer.at/"></div>
+                    </div>
+                    <br />
+                    <a href="#" class="jqModal" id="imprint">Impressum</a>
+                </div>
+            </div>
+            <div id="top">
+                <ul>
+                    <li><strong>Darstellung:</strong>
+                        <input type="radio" name="mode" value="wms" id="wms" /> <label for="wms">Rastergrafiken</label>
+                        <input type="radio" name="mode" value="kml" id="kml" /> <label for="kml">Vektorbasiert</label>
+                    </li>
+                    <li class="max">
+                        <strong><label for="max">max. Elemente:</label></strong>
+                        <form action="javascript:toggleMax()">
+                            <input type="text" name="max" id="max" />
+                            <img src="img/map_go.png" id="setmax" />
+                        </form>
+                    </li>
+                </ul>
+                <a href="#" class="jqModal" id="help">Hilfe</a>
+                <a href="" id="reset">Zurücksetzen</a>
+            </div>
+            <div id="map"></div>
+        </div>
+        <script src="map.js" type="text/javascript"></script>
+        <div class="jqmWindow" id="dialog_help"><div style="float:right"><a href="#" class="jqmClose">Schließen</a></div>
+            <h2>Hilfe</h2>
+            <hr />
+            <h3>Daten</h3>
+            Auf der linken Seite können die anzuzeigenden Daten ausgewählt werden.
+            Dabei können die Ebenen beliebig miteinander kombiniert werden, wobei nur ein Base-Layer (Karte, Satellit oder Flächenwidmung) gleichzeitig angezeigt werden kann.
+            Je nach der Rechenleistung des Computers, was angezeigt wird und wie schnell der wien.gv.at Server antwortet, kann es einige Zeit dauern bis die Daten erscheinen.
+            <h3>Darstellung</h3>
+            Die Datensätze können auf zwei verschiedene Arten dargestellt werden:
+            <h4>Rastergrafiken</h4>
+            Bei der Rastergrafiken-Anzeige werden die Daten als gerasterte Bilder von wien.gv.at geladen. Da der Server die internen Vektordaten in Echtzeit umrechnet, kann es einige Zeit dauern bis der Server antwortet. Bei sehr vielen Daten (z.B. Haltestellen) ist diese Variante allerdings meistens schneller.
+            Wenn diese Anzeigeart gewählt wurde, lassen sich keine Zusatzinformationen anzeigen.
+            <h4>Vektorbasiert</h4>
+            Die Daten werden als Vektordaten geladen und durch den Client auf die Karte gezeichnet. Sehr viele oder komplizierte Daten (z.B. stehende Gewässer) erfordern bei dieser Variante relativ viel Rechenleistung. Die maximale Anzahl der dargestellten Elemente kann angepasst werden, um Ladezeiten zu verkürzen. Sobald die Anzeige merklich ruckelt, sollten Sie entweder Rastergrafiken auswählen oder die Anzahl der angezeigten Elemente verkleinern.
+            Durch einen Klick auf die dargestellten Daten können Zusatzinformationen angezeigt werden.
+            <h3>Permalink</h3>
+            Indem Sie die URL aus Ihrer Adresszeile kopieren, können Sie den derzeitigen Kartenausschnitt inklusive aktiver Ebenen speichern und verschicken.
+        </div>
+        <div class="jqmWindow" id="dialog_imprint"><div style="float:right"><a href="#" class="jqmClose">Schließen</a></div>
+            <h2>Impressum</h2>
+            <hr />
+            Michael Pitzer<br />
+            Leopoldauer Straße 70/8/10<br />
+            1210 Wien<br />
+            Kontakt: <a href="mailto:mail@mpitzer.at">mail@mpitzer.at</a>
+        </div>
+    </body>
+</html>
