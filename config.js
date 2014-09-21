@@ -119,17 +119,6 @@ var standardData = Array(
     }
 },
 {
-    name: "Park & Ride Anlagen - Standorte",
-    layers: ["PARKANDRIDEOGD"],
-    labels: {
-        "BEZIRK": "Bezirk",
-        "ADRESSE": "Adresse",
-        "GARAGENNAME": "Name",
-        "GARAGENBETREIBER": "Betreiber",
-        "WEBLINK1": "Link"
-    }
-},
-{
     name: "Zählbezirksgrenzen", 
     layers: ["ZAEHLBEZIRKOGD"]
     },
